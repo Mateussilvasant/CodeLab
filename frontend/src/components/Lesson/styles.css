@@ -1,0 +1,45 @@
+.lesson-card {
+  span {
+    @apply text-gray-300;
+  }
+}
+
+.lesson-content {
+  @apply rounded 
+  border 
+  border-gray-500 
+  p-4 
+  mt-2;
+
+  header {
+    @apply flex 
+    items-center 
+    justify-between;
+
+    .content-released {
+      @apply flex items-center gap-2 text-sm 
+      text-blue-500 
+      font-medium;
+    }
+
+    .content-block {
+      @apply text-orange-500;
+    }
+
+    .live-content {
+      @apply text-xs 
+      rounded 
+      py-[0.125rem] 
+      px-2 
+      text-white 
+      border 
+      border-green-300;
+    }
+  }
+
+  strong {
+    @apply text-gray-200 
+    mt-5
+    block;
+  }
+}

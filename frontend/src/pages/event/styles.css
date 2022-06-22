@@ -1,0 +1,10 @@
+.page-event {
+  @apply flex 
+  flex-col 
+  min-h-screen;
+
+  main {
+    @apply flex 
+    flex-1;
+  }
+}

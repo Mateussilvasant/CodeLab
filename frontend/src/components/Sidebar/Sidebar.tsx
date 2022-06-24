@@ -24,7 +24,11 @@ const GET_LESSONS_QUERY = gql`
   }
 `;
 
-export const Sidebar = () => {
+export type SidebarProps = {
+  currentLessonSlug: string;
+};
+
+export const Sidebar = ({ currentLessonSlug }: SidebarProps) => {
   const { data } = useQuery<LessonsResponse>(GET_LESSONS_QUERY);
 
   return (
@@ -34,6 +38,7 @@ export const Sidebar = () => {
         {data?.lessons.map((lesson) => {
           return (
             <Lesson
+              currentLessonSlug={currentLessonSlug}
               key={lesson.id}
               title={lesson.title}
               slug={lesson.slug}

@@ -1,0 +1,42 @@
+.lesson-options {
+  @apply gap-8 mt-20 grid grid-cols-2;
+
+  .option {
+    @apply bg-gray-700 
+        rounded 
+        overflow-hidden 
+        flex 
+        items-stretch
+        gap-6
+        hover:bg-gray-600 transition-colors;
+
+    .icon {
+      @apply bg-green-700 
+          h-full 
+          p-6 
+          flex 
+          items-center;
+    }
+
+    .content {
+      @apply py-6 leading-relaxed;
+
+      strong {
+        @apply text-2xl;
+      }
+
+      p {
+        @apply text-sm 
+        text-gray-200
+        mt-2;
+      }
+    }
+
+    .click-area {
+      @apply h-full
+          p-6
+          flex
+          items-center;
+    }
+  }
+}

@@ -12,6 +12,7 @@ module.exports = {
         green: {
           300: '#00B37E',
           500: '#00875F',
+          '500-3tt': 'transparent #00875F transparent transparent',
           700: '#015F43',
         },
         blue: {

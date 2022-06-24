@@ -6,10 +6,14 @@
 
 .lesson-content {
   @apply rounded 
-  border 
+  border
+  flex
+  flex-col
+  relative 
   border-gray-500 
   p-4 
-  mt-2;
+  mt-2
+  group-hover:border-green-500;
 
   header {
     @apply flex 
@@ -41,5 +45,54 @@
     @apply text-gray-200 
     mt-5
     block;
+  }
+}
+
+.selected-lesson-content {
+  @apply rounded 
+  border
+  border-green-500
+  flex
+  flex-col
+  relative 
+  bg-green-500 
+  p-4 
+  mt-2;
+
+  header {
+    @apply flex 
+    items-center 
+    justify-between;
+
+    .content-released {
+      @apply flex items-center gap-2 text-sm 
+      text-white 
+      font-medium;
+    }
+
+    .content-block {
+      @apply text-white;
+    }
+
+    .live-content {
+      @apply text-xs 
+      rounded 
+      py-[0.125rem] 
+      px-2 
+      text-white 
+      border 
+      border-white;
+    }
+  }
+
+  strong {
+    @apply text-white 
+    mt-5
+    block;
+  }
+
+  :after {
+    content: "";
+    @apply border-green-500-3tt border-solid border-[12px] w-0 h-0 absolute bottom-[35px] left-[-25px];
   }
 }

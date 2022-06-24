@@ -1,0 +1,7 @@
+{
+    "css.styleSheets": [
+        "/styles.css",
+        "styles.css",
+        "${fileBasenameNoExtension}.css"
+    ]
+}

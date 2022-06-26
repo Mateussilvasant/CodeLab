@@ -4,42 +4,14 @@ import { LessonButtonOptions } from "./LessonButtonOptions";
 import "./styles.css";
 import "@vime/core/themes/default.css";
 import { Fragment } from "react";
-import { gql, useQuery } from "@apollo/client";
+import { useGetLessonBySlugQuery } from "../../graphql/generated";
 
 type VideoProps = {
   slug?: string;
 };
 
-const GET_LESSON_BY_SLUG_QUERY = gql`
-  query GetLessonBySlug($slug: String) {
-    lesson(where: { slug: $slug }) {
-      title
-      videoId
-      description
-      teacher {
-        name
-        avatarURL
-        bio
-      }
-    }
-  }
-`;
-
-interface GetLessonBySlugResponse {
-  lesson: {
-    title: string;
-    videoId: string;
-    description: string;
-    teacher: {
-      name: string;
-      avatarURL: string;
-      bio: string;
-    };
-  };
-}
-
 export const Video = ({ slug }: VideoProps) => {
-  const { data } = useQuery<GetLessonBySlugResponse>(GET_LESSON_BY_SLUG_QUERY, {
+  const { data } = useGetLessonBySlugQuery({
     variables: {
       slug: slug,
     },
@@ -47,7 +19,7 @@ export const Video = ({ slug }: VideoProps) => {
 
   return (
     <div className="video-lesson">
-      {data ? (
+      {data && data.lesson ? (
         slug && (
           <Fragment>
             <div className="player-background">
@@ -63,16 +35,18 @@ export const Video = ({ slug }: VideoProps) => {
                 <div className="description">
                   <h1>{data.lesson.title}</h1>
                   <p>{data.lesson.description}</p>
-                  <div className="lesson-teacher">
-                    <img
-                      src={data.lesson.teacher.avatarURL}
-                      alt="teacher-img"
-                    />
-                    <div>
-                      <strong>{data.lesson.teacher.name}</strong>
-                      <span>{data.lesson.teacher.bio}</span>
+                  {data.lesson.teacher && (
+                    <div className="lesson-teacher">
+                      <img
+                        src={data.lesson.teacher.avatarURL}
+                        alt="teacher-img"
+                      />
+                      <div>
+                        <strong>{data.lesson.teacher.name}</strong>
+                        <span>{data.lesson.teacher.bio}</span>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
                 <div className="lesson-buttons">
                   <a href="" className="discord-button">
